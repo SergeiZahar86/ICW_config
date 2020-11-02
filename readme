@@ -1,0 +1,22 @@
+Install-Package FFME.Windows -Version 4.2.330
+
+1. Скопировать dll FFMPEG в папку lib
+2. В коде программы указать путь к папке с dll
+Unosquare.FFME.Library.FFmpegDirectory = @"c:\lib";
+
+3. Установить пространство имен в XAML формы
+xmlns:ffme="clr-namespace:Unosquare.FFME;assembly=ffme.win"
+
+4. Добавить элемент управления
+<ffme:MediaElement x:Name="Media" Background="Gray" LoadedBehavior="Play" UnloadedBehavior="Manual" />
+
+5. В коде открыть поток, например
+  public MainWindow()
+        {
+            Unosquare.FFME.Library.FFmpegDirectory = @"D:\Projects\2020\Languages\C#\TestRTSP\lib";
+            InitializeComponent();
+
+            Media.Open(new Uri(@"rtsp://192.168.0.100/test.mp4"));
+        }
+
+

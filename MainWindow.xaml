@@ -1,0 +1,343 @@
+﻿<Window x:Class="ICW_config.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TestRTSP"
+        mc:Ignorable="d"
+        xmlns:ffme="clr-namespace:Unosquare.FFME;assembly=ffme.win"
+        Title="Настройка распознавания номеров" Height="1040" Width="1900"
+        WindowState="Maximized" WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <Style x:Key="startAttestation" TargetType="Button">
+            <Style.Setters>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <RadialGradientBrush>
+                            <GradientStop Color="#FF5C6457" Offset="1"/>
+                            <GradientStop Color="#FF9DBF89" Offset="0"/>
+                        </RadialGradientBrush>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="FontFamily" Value="Calibri"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Name="border" BorderThickness="0" BorderBrush="Black"
+                                        Background="{TemplateBinding Background}" CornerRadius="4">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style.Setters>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FF6EB246"/>
+                    <Setter Property="FontSize" Value="19"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="True">
+                    <Setter Property="BorderThickness" Value="0"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Foreground" Value="black"/>
+                    <Setter Property="Background" Value="Transparent"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="coordinates" TargetType="Button">
+            <Style.Setters>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <RadialGradientBrush>
+                            <GradientStop Color="#FF5C6457" Offset="1"/>
+                            <GradientStop Color="#FF9DBF89" Offset="0"/>
+                        </RadialGradientBrush>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="FontSize" Value="25"/>
+                <Setter Property="FontFamily" Value="Calibri"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Name="border" BorderThickness="0" BorderBrush="Black"
+                                        Background="{TemplateBinding Background}" CornerRadius="4">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style.Setters>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FF6EB246"/>
+                    <Setter Property="FontSize" Value="28"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="True">
+                    <Setter Property="BorderThickness" Value="0"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Foreground" Value="black"/>
+                    <Setter Property="Background" Value="Transparent"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.7*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="1.7*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="0.4*"/>
+        </Grid.RowDefinitions>
+        <Border Grid.ColumnSpan="7" Grid.Column="1" Grid.Row="0" Grid.RowSpan="7" Background="Gray" Margin="0,30,10,0" >
+            <ffme:MediaElement x:Name="VideoLeft" LoadedBehavior="Play" UnloadedBehavior="Manual"/>
+        </Border>
+        <Border Grid.ColumnSpan="7" Grid.Column="9" Grid.Row="0" Grid.RowSpan="7" Background="Gray" Margin="0,30,10,0" >
+            <MediaElement x:Name="VideoRight" />
+        </Border>
+        <Border Grid.ColumnSpan="7" Grid.Column="1" Grid.Row="7" Grid.RowSpan="7" Background="Gray" Margin="0,30,10,0" >
+            <MediaElement x:Name="FotoLeft" />
+        </Border>
+        <Border Grid.ColumnSpan="7" Grid.Column="9" Grid.Row="7" Grid.RowSpan="7" Background="Gray" Margin="0,30,10,0" >
+            <MediaElement x:Name="FotoRight" />
+        </Border>
+        <Button x:Name="StartAttestation" Click="StartAttestation_Click"  Grid.Column="0" Grid.Row="0" Height="44" Width="90" 
+                 Style="{StaticResource startAttestation}" HorizontalAlignment="Left" Margin="25,0,0,0">
+            <TextBlock  Grid.Row="1" Text="SnapShot"  
+                           HorizontalAlignment="Center" />
+        </Button>
+        <!--////////////////////////// left  /////////////////////////// -->
+        <!--
+        <Button x:Name="X_plus_left" Click="change_X_plus_left"  Grid.Column="1" Grid.Row="14" Height="44" Width="60" 
+                 Style="{StaticResource coordinates}" HorizontalAlignment="Center" Content="+ X">
+        </Button>
+        <Button x:Name="X_minus_left" Click="change_X_minus_left"  Grid.Column="1" Grid.Row="15" Height="44" Width="60" 
+                 Style="{StaticResource coordinates}" HorizontalAlignment="Center" Content="- X">
+        </Button>
+        <Button x:Name="Y_plus_left" Click="change_Y_plus_left"  Grid.Column="3" Grid.Row="14" Height="44" Width="60" 
+                 Style="{StaticResource coordinates}" HorizontalAlignment="Center" Content="+ Y">
+        </Button>
+        <Button x:Name="Y_minus_left" Click="change_Y_minus_left"  Grid.Column="3" Grid.Row="15" Height="44" Width="60" 
+                 Style="{StaticResource coordinates}" HorizontalAlignment="Center" Content="- Y">
+        </Button>
+        -->
+        <!--/////////////////////////// right ////////////////////////// -->
+        <!--
+        <Button x:Name="X_plus_right" Click="change_X_plus_right"  Grid.Column="9" Grid.Row="14" Height="44" Width="60" 
+                 Style="{StaticResource coordinates}" HorizontalAlignment="Center" Content="+ X">
+        </Button>
+        <Button x:Name="X_minus_right" Click="change_X_minus_right"  Grid.Column="9" Grid.Row="15" Height="44" Width="60" 
+                 Style="{StaticResource coordinates}" HorizontalAlignment="Center" Content="- X">
+        </Button>
+        -->
+        <Button x:Name="LeftButton" Click="change_Left"  Grid.Column="0" Grid.Row="15" Height="44" Width="60" 
+                 Style="{StaticResource coordinates}" HorizontalAlignment="Center" Content="Left">
+        </Button>
+        <Button x:Name="LeftConnect" Click="Connect_Left"  Grid.Column="0" Grid.Row="16" Height="44" Width="60" 
+                 Style="{StaticResource coordinates}" HorizontalAlignment="Center" >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Text="Left" FontSize="14" HorizontalAlignment="Center"/>
+                <TextBlock Grid.Row="1" Text="Connect" FontSize="14"/>
+            </Grid>
+        </Button>
+        <TextBox x:Name="LeftMessages" Grid.Column="1" Grid.ColumnSpan="7" Grid.Row="16"
+               Background="LightGray" Margin="5,0,75,0" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" />
+        <TextBox x:Name="RightMessages" Grid.Column="1" Grid.ColumnSpan="7" Grid.Row="16"
+               Background="LightGray" Margin="5,0,75,0" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" />
+        <Button x:Name="RightButton" Click="change_Right"  Grid.Column="8" Grid.Row="15" Height="44" Width="60" 
+                 Style="{StaticResource coordinates}" HorizontalAlignment="Center" Content="Right">
+        </Button>
+        <Button x:Name="RightConnect" Click="Connect_Right"  Grid.Column="8" Grid.Row="16" Height="44" Width="60" 
+                 Style="{StaticResource coordinates}" HorizontalAlignment="Center" >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Text="Right" FontSize="14" HorizontalAlignment="Center"/>
+                <TextBlock Grid.Row="1" Text="Connect" FontSize="14"/>
+            </Grid>
+        </Button>
+
+        <!--/////////////////////////////// left  ////////////////////////////-->
+        <Label Grid.Row="14" Grid.Column="1" Content="X 0" FontSize="14" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+        <Label Grid.Row="14" Grid.Column="2" Content="X 1" FontSize="14" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+        <Label Grid.Row="14" Grid.Column="3" Content="Y 0" FontSize="14" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+        <Label Grid.Row="14" Grid.Column="4" Content="Y 1" FontSize="14" HorizontalContentAlignment="Center"  VerticalContentAlignment="Bottom"/>
+        <Label Grid.Row="14" Grid.Column="9" Content="X 0" FontSize="14" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+        <Label Grid.Row="14" Grid.Column="10" Content="X 1" FontSize="14" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+        <Label Grid.Row="14" Grid.Column="11" Content="Y 0" FontSize="14" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+        <Label Grid.Row="14" Grid.Column="12" Content="Y 1" FontSize="14" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+
+
+
+
+
+        <Grid Grid.Row="15" Grid.Column="1" Margin="5,0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label x:Name="Label_X_0_left" Grid.Row="0" Height="19" BorderBrush="Gray" Background="#FFE0D8D8"/>
+            <TextBox x:Name="TextBox_X_0_left" Grid.Row="1" Height="22" FontSize="16" MaxLength="10"
+                     BorderBrush="Gray" Background="#FFE0D8D8"/>
+        </Grid>
+        <Grid Grid.Row="15" Grid.Column="2" Margin="5,0" >
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label x:Name="Label_X_1_left" Grid.Row="0" Height="19" BorderBrush="Gray" Background="#FFE0D8D8"/>
+            <TextBox x:Name="TextBox_X_1_left" Grid.Row="1" Height="22" FontSize="16" MaxLength="10"
+                      BorderBrush="Gray" Background="#FFE0D8D8"/>
+        </Grid>
+        <!--///////////////////////////////// left  /////////////////////////////////////////////////////////-->
+        <Grid Grid.Row="15" Grid.Column="3" Margin="5,0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label x:Name="Label_Y_0_left" Grid.Row="0" Height="19" 
+                   BorderBrush="Gray" Background="#FFE0D8D8"/>
+            <TextBox x:Name="TextBox_Y_0_left" Grid.Row="1" Height="22" FontSize="16" MaxLength="10"
+                     BorderBrush="Gray" Background="#FFE0D8D8"/>
+        </Grid>
+        <Grid Grid.Row="15" Grid.Column="4" Margin="5,0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label x:Name="Label_Y_1_left" Grid.Row="0" Height="19" 
+                   BorderBrush="Gray" Background="#FFE0D8D8"/>
+            <TextBox x:Name="TextBox_Y_1_left" Grid.Row="1" Height="22" FontSize="16" MaxLength="10"
+                    BorderBrush="Gray" Background="#FFE0D8D8"/>
+        </Grid>
+        <!--///////////////////////////////// right   //////////////////////////////////////////////////-->
+        <Grid Grid.Row="15" Grid.Column="9" Margin="5,0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label x:Name="Label_X_0_right" Grid.Row="0" Height="19" 
+                   BorderBrush="Gray" Background="#FFE0D8D8"/>
+            <TextBox x:Name="TextBox_X_0_right" Grid.Row="1" Height="22" FontSize="16" MaxLength="10"
+                     BorderBrush="Gray" Background="#FFE0D8D8"/>
+        </Grid>
+        <Grid Grid.Row="15" Grid.Column="10" Margin="5,0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label x:Name="Label_X_1_right" Grid.Row="0" Height="19" 
+                   BorderBrush="Gray" Background="#FFE0D8D8"/>
+            <TextBox x:Name="TextBox_X_1_right" Grid.Row="1" Height="22" FontSize="16" MaxLength="10"
+                     BorderBrush="Gray" Background="#FFE0D8D8"/>
+        </Grid>
+        <!--////////////////////////////////////  right   //////////////////////////////////////////////////////-->
+        <Grid Grid.Row="15" Grid.Column="11" Margin="5,0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label x:Name="Label_Y_0_right" Grid.Row="0" Height="19" 
+                   BorderBrush="Gray" Background="#FFE0D8D8"/>
+            <TextBox x:Name="TextBox_Y_0_right" Grid.Row="1" Height="22" FontSize="16" MaxLength="10"
+                     BorderBrush="Gray" Background="#FFE0D8D8"/>
+        </Grid>
+        <Grid Grid.Row="15" Grid.Column="12" Margin="5,0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label x:Name="Label_Y_1_right" Grid.Row="0" Height="19" 
+                   BorderBrush="Gray" Background="#FFE0D8D8"/>
+            <TextBox x:Name="TextBox_Y_1_right" Grid.Row="1" Height="22" FontSize="16" MaxLength="10"
+                     BorderBrush="Gray" Background="#FFE0D8D8"/>
+        </Grid>
+        <!--///////////////////////// Определение левого номера  //////////////////////////////////////////////////////////-->
+        <StackPanel Grid.Row="15" Grid.Column="5" Grid.ColumnSpan="3" Orientation="Horizontal"
+                    FlowDirection="LeftToRight" Margin="50,0,0,0" >
+            <Label x:Name="numberLeft" Height="40" Width="200" Background="#FFE0D8D8" FontSize="16"/>
+            <CheckBox x:Name="checkNumberLeft" VerticalAlignment="Center" Margin="10,0,0,0" >
+                <CheckBox.LayoutTransform>
+                    <ScaleTransform ScaleX="2" ScaleY="2" />
+                </CheckBox.LayoutTransform>
+            </CheckBox>
+        </StackPanel>
+        <!--///////////////////////// Определение правого номера  //////////////////////////////////////////////////////////-->
+        <StackPanel Grid.Row="15" Grid.Column="13" Grid.ColumnSpan="3" Orientation="Horizontal"
+                    FlowDirection="LeftToRight" Margin="50,0,0,0" >
+            <Label x:Name="numberRight" Height="40" Width="200" Background="#FFE0D8D8" FontSize="16"/>
+            <CheckBox x:Name="checkNumberRight" VerticalAlignment="Center" Margin="10,0,0,0" >
+                <CheckBox.LayoutTransform>
+                    <ScaleTransform ScaleX="2" ScaleY="2" />
+                </CheckBox.LayoutTransform>
+            </CheckBox>
+        </StackPanel>
+        <!--
+        <MediaElement x:Name="Creux_De_Van___45150_mp4" Grid.ColumnSpan="16" Margin="84,50,-98,-360" Grid.Row="4" Grid.RowSpan="14" Stretch="Fill"/>
+        -->
+
+
+
+
+
+
+
+
+
+
+
+    </Grid>
+
+
+
+    
+</Window>
